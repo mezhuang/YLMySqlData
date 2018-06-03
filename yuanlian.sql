@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : yualiana
+Source Server         : localhost_3306
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : yuanlian
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-05-31 16:02:39
+Date: 2018-06-04 00:25:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `commission_info` (
   `distribution_name` varchar(50) DEFAULT NULL COMMENT '分销商姓名',
   `distribution_phone` varchar(11) NOT NULL COMMENT '分销商电话',
   PRIMARY KEY (`distribution_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of commission_info
@@ -47,7 +47,7 @@ CREATE TABLE `customer_report` (
   `open_id` varchar(30) NOT NULL COMMENT '平台唯一标识',
   `is_expire` varchar(1) DEFAULT NULL COMMENT '是否超过保护期',
   PRIMARY KEY (`customer_report_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of customer_report
@@ -60,34 +60,53 @@ INSERT INTO `customer_report` VALUES ('26', '18876451249', '2016-11-08', '133462
 -- ----------------------------
 DROP TABLE IF EXISTS `group_info`;
 CREATE TABLE `group_info` (
-  `group_user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(50) DEFAULT NULL COMMENT '分组角色名称',
-  `user_id` varchar(50) DEFAULT NULL COMMENT '角色ID',
-  `group_code` varchar(2) DEFAULT NULL COMMENT '用户类型：01系统管理员,02分销商,03客户,04导购员,05分销经理',
-  PRIMARY KEY (`group_user_id`)
+  `group_code` varchar(5) DEFAULT NULL COMMENT '用户类型：01系统管理员,02分销商,03客户,04导购员,05分销经理',
+  PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_info
 -- ----------------------------
-INSERT INTO `group_info` VALUES ('28', '系统管理员', '18', null);
-INSERT INTO `group_info` VALUES ('29', '家居顾问', '68', null);
+INSERT INTO `group_info` VALUES ('18', '系统管理员', '10001');
+INSERT INTO `group_info` VALUES ('19', '家居顾问', '10002');
+INSERT INTO `group_info` VALUES ('20', '分销商', '10003');
+INSERT INTO `group_info` VALUES ('21', '普通用户', '10004');
+INSERT INTO `group_info` VALUES ('22', '带看人', '10005');
 
 -- ----------------------------
 -- Table structure for `group_user_map`
 -- ----------------------------
 DROP TABLE IF EXISTS `group_user_map`;
 CREATE TABLE `group_user_map` (
-  `group_user_id` int(11) NOT NULL,
+  `group_user_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` varchar(50) DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`group_user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_user_map
 -- ----------------------------
-INSERT INTO `group_user_map` VALUES ('38', '28', '18');
+INSERT INTO `group_user_map` VALUES ('1', '28', '18');
+INSERT INTO `group_user_map` VALUES ('3', '18', '114');
+INSERT INTO `group_user_map` VALUES ('4', '20', '115');
+INSERT INTO `group_user_map` VALUES ('5', '20', '116');
+INSERT INTO `group_user_map` VALUES ('6', '20', '117');
+INSERT INTO `group_user_map` VALUES ('7', '20', '118');
+INSERT INTO `group_user_map` VALUES ('8', '20', '118');
+INSERT INTO `group_user_map` VALUES ('9', '20', '120');
+INSERT INTO `group_user_map` VALUES ('10', '20', '120');
+INSERT INTO `group_user_map` VALUES ('11', '20', '120');
+INSERT INTO `group_user_map` VALUES ('12', '20', '123');
+INSERT INTO `group_user_map` VALUES ('13', '20', '124');
+INSERT INTO `group_user_map` VALUES ('14', '20', '125');
+INSERT INTO `group_user_map` VALUES ('15', '20', '126');
+INSERT INTO `group_user_map` VALUES ('16', '19', '61');
+INSERT INTO `group_user_map` VALUES ('19', '19', '62');
+INSERT INTO `group_user_map` VALUES ('20', '19', '63');
+INSERT INTO `group_user_map` VALUES ('21', '19', '64');
 
 -- ----------------------------
 -- Table structure for `power_group_map`
@@ -103,7 +122,10 @@ CREATE TABLE `power_group_map` (
 -- ----------------------------
 -- Records of power_group_map
 -- ----------------------------
-INSERT INTO `power_group_map` VALUES ('58', '48', '28');
+INSERT INTO `power_group_map` VALUES ('1', '18', '18');
+INSERT INTO `power_group_map` VALUES ('2', '19', '19');
+INSERT INTO `power_group_map` VALUES ('3', '20', '20');
+INSERT INTO `power_group_map` VALUES ('4', '21', '21');
 
 -- ----------------------------
 -- Table structure for `power_info`
@@ -115,12 +137,15 @@ CREATE TABLE `power_info` (
   `power_name` varchar(50) DEFAULT NULL COMMENT '权限名称',
   `remark` varchar(50) DEFAULT NULL COMMENT '分组角色ID',
   PRIMARY KEY (`power_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='用户分组表';
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='用户分组表';
 
 -- ----------------------------
 -- Records of power_info
 -- ----------------------------
-INSERT INTO `power_info` VALUES ('48', '10001', '系统管理', '测试环境');
+INSERT INTO `power_info` VALUES ('18', '10001', '系统管理', '测试环境');
+INSERT INTO `power_info` VALUES ('19', '10002', '家居顾问', null);
+INSERT INTO `power_info` VALUES ('20', '10003', '分销商', null);
+INSERT INTO `power_info` VALUES ('21', '10004', '普通用户', null);
 
 -- ----------------------------
 -- Table structure for `product_info`
@@ -133,7 +158,7 @@ CREATE TABLE `product_info` (
   `product_price` varchar(12) NOT NULL COMMENT '产品价格',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_info
@@ -152,10 +177,22 @@ CREATE TABLE `sales_info` (
   `guide_phone` varchar(50) DEFAULT NULL COMMENT '导购员电话',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`sales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `test`
+-- ----------------------------
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE `test` (
+  `dd` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of test
 -- ----------------------------
 
 -- ----------------------------
@@ -163,20 +200,40 @@ CREATE TABLE `sales_info` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(50) NOT NULL,
   `open_id` varchar(30) NOT NULL COMMENT '微信唯一标识',
   `user_name` varchar(50) DEFAULT NULL COMMENT '用户姓名',
   `user_phone` varchar(12) DEFAULT NULL COMMENT '用户电话',
   `user_reg_time` varchar(24) DEFAULT NULL COMMENT '用户注册时间',
+  `user_type` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `user_id` (`user_id`),
   KEY `user_id_2` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('18', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '袁仕旭', '15208945149', null);
-INSERT INTO `user_info` VALUES ('66', '', '店长', '18876175897', null);
-INSERT INTO `user_info` VALUES ('67', '', '周芬', '15208945149', null);
-INSERT INTO `user_info` VALUES ('99', '', '小白', '15201245203', null);
+INSERT INTO `user_info` VALUES ('100', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '善哥', '155241223', '2018-06-03 01:18:55', null);
+INSERT INTO `user_info` VALUES ('105', 'fffff', null, null, '2018-06-03 11:34:07', null);
+INSERT INTO `user_info` VALUES ('106', 'fffff', null, null, '2018-06-03 11:37:48', null);
+INSERT INTO `user_info` VALUES ('107', 'fffff', 'yyy', '15264', '2018-06-03 11:42:29', null);
+INSERT INTO `user_info` VALUES ('108', 'fffff', 'yyy', '15264', '2018-06-03 11:46:17', null);
+INSERT INTO `user_info` VALUES ('113', 'fffff', 'yyy', '15264', '2018-06-03 11:56:08', null);
+INSERT INTO `user_info` VALUES ('114', 'fffff', 'xiaoliu', '18812345678', '2018-06-03 12:36:55', null);
+INSERT INTO `user_info` VALUES ('115', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ffd', '1232', '2018-06-03 13:23:31', null);
+INSERT INTO `user_info` VALUES ('116', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'ff', '2018-06-03 20:53:33', null);
+INSERT INTO `user_info` VALUES ('117', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'xiaoliu', '15208958785', '2018-06-03 20:57:29', null);
+INSERT INTO `user_info` VALUES ('118', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '444', '44', '2018-06-03 20:58:17', null);
+INSERT INTO `user_info` VALUES ('119', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '444', '44', '2018-06-03 20:58:27', null);
+INSERT INTO `user_info` VALUES ('120', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'hheh', 'fff', '2018-06-03 21:03:08', null);
+INSERT INTO `user_info` VALUES ('121', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'fff', '2018-06-03 21:03:40', null);
+INSERT INTO `user_info` VALUES ('122', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'fff', '2018-06-03 21:04:38', null);
+INSERT INTO `user_info` VALUES ('123', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ffdf', 'fdfd', '2018-06-03 21:08:34', null);
+INSERT INTO `user_info` VALUES ('124', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å°?ç¬¦', '1529883776', '2018-06-03 21:24:33', null);
+INSERT INTO `user_info` VALUES ('125', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å??é£?é??', '343242', '2018-06-03 21:26:37', null);
+INSERT INTO `user_info` VALUES ('126', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å°?è?¬', '1287632323', '2018-06-03 21:28:39', null);
+INSERT INTO `user_info` VALUES ('18', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '袁仕旭', '15208945149', null, null);
+INSERT INTO `user_info` VALUES ('61', '', '店长', '18876175897', null, null);
+INSERT INTO `user_info` VALUES ('62', '', '周芬', '15208945149', null, null);
+INSERT INTO `user_info` VALUES ('63', '', '小白', '15201245203', null, null);
