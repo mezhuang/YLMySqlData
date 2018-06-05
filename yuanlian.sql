@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-04 00:25:47
+Date: 2018-06-06 00:32:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,10 +20,13 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `commission_info`;
 CREATE TABLE `commission_info` (
-  `distribution_id` int(11) NOT NULL AUTO_INCREMENT,
-  `distribution_name` varchar(50) DEFAULT NULL COMMENT '分销商姓名',
-  `distribution_phone` varchar(11) NOT NULL COMMENT '分销商电话',
-  PRIMARY KEY (`distribution_id`)
+  `commi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `referee_name` varchar(50) DEFAULT NULL COMMENT '分销商姓名',
+  `referee_phone` varchar(20) NOT NULL COMMENT '分销商电话',
+  `commi_level` varchar(50) DEFAULT NULL,
+  `commi_ratio` varchar(50) DEFAULT NULL,
+  `commi_money` varchar(50) DEFAULT NULL COMMENT '佣金额度',
+  PRIMARY KEY (`commi_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -64,7 +67,7 @@ CREATE TABLE `group_info` (
   `group_name` varchar(50) DEFAULT NULL COMMENT '分组角色名称',
   `group_code` varchar(5) DEFAULT NULL COMMENT '用户类型：01系统管理员,02分销商,03客户,04导购员,05分销经理',
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_info
@@ -89,20 +92,10 @@ CREATE TABLE `group_user_map` (
 -- ----------------------------
 -- Records of group_user_map
 -- ----------------------------
-INSERT INTO `group_user_map` VALUES ('1', '28', '18');
-INSERT INTO `group_user_map` VALUES ('3', '18', '114');
-INSERT INTO `group_user_map` VALUES ('4', '20', '115');
-INSERT INTO `group_user_map` VALUES ('5', '20', '116');
-INSERT INTO `group_user_map` VALUES ('6', '20', '117');
-INSERT INTO `group_user_map` VALUES ('7', '20', '118');
-INSERT INTO `group_user_map` VALUES ('8', '20', '118');
-INSERT INTO `group_user_map` VALUES ('9', '20', '120');
-INSERT INTO `group_user_map` VALUES ('10', '20', '120');
-INSERT INTO `group_user_map` VALUES ('11', '20', '120');
-INSERT INTO `group_user_map` VALUES ('12', '20', '123');
-INSERT INTO `group_user_map` VALUES ('13', '20', '124');
-INSERT INTO `group_user_map` VALUES ('14', '20', '125');
-INSERT INTO `group_user_map` VALUES ('15', '20', '126');
+INSERT INTO `group_user_map` VALUES ('1', '18', '18');
+INSERT INTO `group_user_map` VALUES ('3', '19', '18');
+INSERT INTO `group_user_map` VALUES ('4', '20', '18');
+INSERT INTO `group_user_map` VALUES ('15', '21', '18');
 INSERT INTO `group_user_map` VALUES ('16', '19', '61');
 INSERT INTO `group_user_map` VALUES ('19', '19', '62');
 INSERT INTO `group_user_map` VALUES ('20', '19', '63');
@@ -137,7 +130,7 @@ CREATE TABLE `power_info` (
   `power_name` varchar(50) DEFAULT NULL COMMENT '权限名称',
   `remark` varchar(50) DEFAULT NULL COMMENT '分组角色ID',
   PRIMARY KEY (`power_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COMMENT='用户分组表';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='用户分组表';
 
 -- ----------------------------
 -- Records of power_info
@@ -170,18 +163,22 @@ CREATE TABLE `product_info` (
 DROP TABLE IF EXISTS `sales_info`;
 CREATE TABLE `sales_info` (
   `sales_id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` varchar(11) NOT NULL COMMENT '产品ID',
-  `discount` datetime(6) DEFAULT NULL COMMENT '折扣',
-  `transaction_price` varchar(12) NOT NULL COMMENT '成交价格',
-  `customer_phone` varchar(1) DEFAULT NULL COMMENT '客户电话',
-  `guide_phone` varchar(50) DEFAULT NULL COMMENT '导购员电话',
+  `product_id` varchar(50) NOT NULL COMMENT '产品ID',
+  `transaction_price` varchar(50) NOT NULL COMMENT '成交价格',
+  `transaction_time` varchar(30) NOT NULL,
+  `customer_phone` varchar(20) DEFAULT NULL COMMENT '客户电话',
+  `guide_phone` varchar(20) DEFAULT NULL COMMENT '导购员电话',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
+  `is_task` varchar(2) DEFAULT NULL COMMENT '分销商是否带看',
+  `task_name` varchar(50) DEFAULT NULL,
+  `task_phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sales_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_info
 -- ----------------------------
+INSERT INTO `sales_info` VALUES ('111', '11', '100', '', '152', '15208945149', '44', null, null, null);
 
 -- ----------------------------
 -- Table structure for `test`
