@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-06 00:32:02
+Date: 2018-06-08 16:57:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,17 +21,22 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `commission_info`;
 CREATE TABLE `commission_info` (
   `commi_id` int(11) NOT NULL AUTO_INCREMENT,
-  `referee_name` varchar(50) DEFAULT NULL COMMENT '分销商姓名',
-  `referee_phone` varchar(20) NOT NULL COMMENT '分销商电话',
-  `commi_level` varchar(50) DEFAULT NULL,
+  `product_info` varchar(50) DEFAULT NULL,
   `commi_ratio` varchar(50) DEFAULT NULL,
   `commi_money` varchar(50) DEFAULT NULL COMMENT '佣金额度',
+  `is_task` varchar(10) DEFAULT NULL,
+  `commi_status` varchar(5) DEFAULT NULL,
+  `referee_phone` varchar(20) NOT NULL COMMENT '分销商电话',
+  `customer_phone` varchar(20) DEFAULT NULL COMMENT '分销商姓名',
+  `customer_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`commi_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of commission_info
 -- ----------------------------
+INSERT INTO `commission_info` VALUES ('111', '1', '0..03', '100', null, '1', '15208945149', '小黄', null);
+INSERT INTO `commission_info` VALUES ('112', '??', '0.02', '200.0', null, '1', '15208945149', '15208945148', null);
 
 -- ----------------------------
 -- Table structure for `customer_report`
@@ -74,9 +79,9 @@ CREATE TABLE `group_info` (
 -- ----------------------------
 INSERT INTO `group_info` VALUES ('18', '系统管理员', '10001');
 INSERT INTO `group_info` VALUES ('19', '家居顾问', '10002');
-INSERT INTO `group_info` VALUES ('20', '分销商', '10003');
-INSERT INTO `group_info` VALUES ('21', '普通用户', '10004');
-INSERT INTO `group_info` VALUES ('22', '带看人', '10005');
+INSERT INTO `group_info` VALUES ('20', '分销经理', '10003');
+INSERT INTO `group_info` VALUES ('21', '分销经纪人', '10004');
+INSERT INTO `group_info` VALUES ('22', '普通用户', '10005');
 
 -- ----------------------------
 -- Table structure for `group_user_map`
@@ -163,22 +168,45 @@ CREATE TABLE `product_info` (
 DROP TABLE IF EXISTS `sales_info`;
 CREATE TABLE `sales_info` (
   `sales_id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` varchar(50) NOT NULL COMMENT '产品ID',
-  `transaction_price` varchar(50) NOT NULL COMMENT '成交价格',
-  `transaction_time` varchar(30) NOT NULL,
+  `product_info` varchar(200) NOT NULL COMMENT '产品ID',
+  `trans_money` varchar(50) NOT NULL COMMENT '成交价格',
+  `trans_time` varchar(30) NOT NULL,
+  `customer_name` varchar(20) DEFAULT NULL,
   `customer_phone` varchar(20) DEFAULT NULL COMMENT '客户电话',
-  `guide_phone` varchar(20) DEFAULT NULL COMMENT '导购员电话',
+  `open_id` varchar(50) DEFAULT NULL COMMENT '导购员电话',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   `is_task` varchar(2) DEFAULT NULL COMMENT '分销商是否带看',
   `task_name` varchar(50) DEFAULT NULL,
   `task_phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_info
 -- ----------------------------
-INSERT INTO `sales_info` VALUES ('111', '11', '100', '', '152', '15208945149', '44', null, null, null);
+INSERT INTO `sales_info` VALUES ('111', '11', '10000', '2018-06-03 11:46:17', '小张', '15208945148', '15208945149', '44', '1', null, null);
+INSERT INTO `sales_info` VALUES ('112', '12', '20000', '2018-06-08 10:09:21', '小红', '15208951424', '15208945149', '55', '1', null, null);
+INSERT INTO `sales_info` VALUES ('113', '??', 'undefined', 'undefined', null, '136', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('114', '??', '1000', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('115', '??', '1000', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('116', '??', '1000', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('117', '??', '1000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('118', '??', '1000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('119', '??', '1000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('120', '??', '1000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('121', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('122', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('123', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('124', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('125', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('126', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('127', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('128', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('129', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('130', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('131', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('132', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('133', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
 
 -- ----------------------------
 -- Table structure for `test`
@@ -203,6 +231,8 @@ CREATE TABLE `user_info` (
   `user_phone` varchar(12) DEFAULT NULL COMMENT '用户电话',
   `user_reg_time` varchar(24) DEFAULT NULL COMMENT '用户注册时间',
   `user_type` varchar(3) DEFAULT NULL,
+  `employee_code` varchar(20) DEFAULT NULL,
+  `superior_code` varchar(30) DEFAULT NULL COMMENT '上级',
   PRIMARY KEY (`user_id`),
   KEY `user_id` (`user_id`),
   KEY `user_id_2` (`user_id`)
@@ -211,26 +241,14 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('100', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '善哥', '155241223', '2018-06-03 01:18:55', null);
-INSERT INTO `user_info` VALUES ('105', 'fffff', null, null, '2018-06-03 11:34:07', null);
-INSERT INTO `user_info` VALUES ('106', 'fffff', null, null, '2018-06-03 11:37:48', null);
-INSERT INTO `user_info` VALUES ('107', 'fffff', 'yyy', '15264', '2018-06-03 11:42:29', null);
-INSERT INTO `user_info` VALUES ('108', 'fffff', 'yyy', '15264', '2018-06-03 11:46:17', null);
-INSERT INTO `user_info` VALUES ('113', 'fffff', 'yyy', '15264', '2018-06-03 11:56:08', null);
-INSERT INTO `user_info` VALUES ('114', 'fffff', 'xiaoliu', '18812345678', '2018-06-03 12:36:55', null);
-INSERT INTO `user_info` VALUES ('115', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ffd', '1232', '2018-06-03 13:23:31', null);
-INSERT INTO `user_info` VALUES ('116', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'ff', '2018-06-03 20:53:33', null);
-INSERT INTO `user_info` VALUES ('117', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'xiaoliu', '15208958785', '2018-06-03 20:57:29', null);
-INSERT INTO `user_info` VALUES ('118', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '444', '44', '2018-06-03 20:58:17', null);
-INSERT INTO `user_info` VALUES ('119', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '444', '44', '2018-06-03 20:58:27', null);
-INSERT INTO `user_info` VALUES ('120', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'hheh', 'fff', '2018-06-03 21:03:08', null);
-INSERT INTO `user_info` VALUES ('121', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'fff', '2018-06-03 21:03:40', null);
-INSERT INTO `user_info` VALUES ('122', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ff', 'fff', '2018-06-03 21:04:38', null);
-INSERT INTO `user_info` VALUES ('123', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'ffdf', 'fdfd', '2018-06-03 21:08:34', null);
-INSERT INTO `user_info` VALUES ('124', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å°?ç¬¦', '1529883776', '2018-06-03 21:24:33', null);
-INSERT INTO `user_info` VALUES ('125', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å??é£?é??', '343242', '2018-06-03 21:26:37', null);
-INSERT INTO `user_info` VALUES ('126', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'å°?è?¬', '1287632323', '2018-06-03 21:28:39', null);
-INSERT INTO `user_info` VALUES ('18', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '袁仕旭', '15208945149', null, null);
-INSERT INTO `user_info` VALUES ('61', '', '店长', '18876175897', null, null);
-INSERT INTO `user_info` VALUES ('62', '', '周芬', '15208945149', null, null);
-INSERT INTO `user_info` VALUES ('63', '', '小白', '15201245203', null, null);
+INSERT INTO `user_info` VALUES ('100', 'ozLOG5LWXLjDpxZLrD1DxXIKx888', '善哥', '155241223', '2018-06-03 01:18:55', null, null, null);
+INSERT INTO `user_info` VALUES ('105', 'fffff', null, null, '2018-06-03 11:34:07', null, null, null);
+INSERT INTO `user_info` VALUES ('106', 'fffff', null, null, '2018-06-03 11:37:48', null, null, null);
+INSERT INTO `user_info` VALUES ('107', 'fffff', 'yyy', '15264', '2018-06-03 11:42:29', null, null, null);
+INSERT INTO `user_info` VALUES ('108', 'fffff', 'yyy', '15264', '2018-06-03 11:46:17', null, null, null);
+INSERT INTO `user_info` VALUES ('113', 'fffff', 'yyy', '15264', '2018-06-03 11:56:08', null, null, null);
+INSERT INTO `user_info` VALUES ('114', 'fffff', 'xiaoliu', '18812345678', '2018-06-03 12:36:55', null, null, null);
+INSERT INTO `user_info` VALUES ('18', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', '袁仕旭', '15208945149', null, null, null, '08001');
+INSERT INTO `user_info` VALUES ('61', '', '分销经理', '18876175897', null, null, '08001', null);
+INSERT INTO `user_info` VALUES ('62', '', '周芬', '15208985488', null, null, null, null);
+INSERT INTO `user_info` VALUES ('63', '', '小白', '15201245203', null, null, null, null);
