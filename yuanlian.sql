@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-08 16:57:59
+Date: 2018-06-10 10:06:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,17 +26,18 @@ CREATE TABLE `commission_info` (
   `commi_money` varchar(50) DEFAULT NULL COMMENT '佣金额度',
   `is_task` varchar(10) DEFAULT NULL,
   `commi_status` varchar(5) DEFAULT NULL,
-  `referee_phone` varchar(20) NOT NULL COMMENT '分销商电话',
+  `referee_phone` varchar(20) DEFAULT NULL COMMENT '分销商电话',
   `customer_phone` varchar(20) DEFAULT NULL COMMENT '分销商姓名',
   `customer_name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`commi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of commission_info
 -- ----------------------------
 INSERT INTO `commission_info` VALUES ('111', '1', '0..03', '100', null, '1', '15208945149', '小黄', null);
 INSERT INTO `commission_info` VALUES ('112', '??', '0.02', '200.0', null, '1', '15208945149', '15208945148', null);
+INSERT INTO `commission_info` VALUES ('113', null, null, null, null, '1', null, '137', 'å?¡æ?¥');
 
 -- ----------------------------
 -- Table structure for `customer_report`
@@ -92,19 +93,19 @@ CREATE TABLE `group_user_map` (
   `group_id` varchar(50) DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`group_user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of group_user_map
 -- ----------------------------
-INSERT INTO `group_user_map` VALUES ('1', '18', '18');
-INSERT INTO `group_user_map` VALUES ('3', '19', '18');
-INSERT INTO `group_user_map` VALUES ('4', '20', '18');
-INSERT INTO `group_user_map` VALUES ('15', '21', '18');
 INSERT INTO `group_user_map` VALUES ('16', '19', '61');
 INSERT INTO `group_user_map` VALUES ('19', '19', '62');
 INSERT INTO `group_user_map` VALUES ('20', '19', '63');
 INSERT INTO `group_user_map` VALUES ('21', '19', '64');
+INSERT INTO `group_user_map` VALUES ('22', '18', '18');
+INSERT INTO `group_user_map` VALUES ('23', '19', '18');
+INSERT INTO `group_user_map` VALUES ('24', '20', '18');
+INSERT INTO `group_user_map` VALUES ('25', '21', '18');
 
 -- ----------------------------
 -- Table structure for `power_group_map`
@@ -179,7 +180,7 @@ CREATE TABLE `sales_info` (
   `task_name` varchar(50) DEFAULT NULL,
   `task_phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sales_info
@@ -207,6 +208,8 @@ INSERT INTO `sales_info` VALUES ('130', '??', '10000', '2018-6-18', null, '15208
 INSERT INTO `sales_info` VALUES ('131', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
 INSERT INTO `sales_info` VALUES ('132', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
 INSERT INTO `sales_info` VALUES ('133', '??', '10000', '2018-6-18', null, '15208945148', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('134', 'é¤?æ¡?', '7600', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
+INSERT INTO `sales_info` VALUES ('135', 'é¤?æ¡?', '7600', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
 
 -- ----------------------------
 -- Table structure for `test`
