@@ -10,13 +10,13 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-20 20:20:30
+Date: 2018-06-21 23:41:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `commission_info`
+-- Table structure for commission_info
 -- ----------------------------
 DROP TABLE IF EXISTS `commission_info`;
 CREATE TABLE `commission_info` (
@@ -41,7 +41,7 @@ INSERT INTO `commission_info` VALUES ('112', '??', '0.02', '200.0', null, null, 
 INSERT INTO `commission_info` VALUES ('113', null, null, null, null, null, '1', null, '137', 'å?¡æ?¥');
 
 -- ----------------------------
--- Table structure for `customer_report`
+-- Table structure for customer_report
 -- ----------------------------
 DROP TABLE IF EXISTS `customer_report`;
 CREATE TABLE `customer_report` (
@@ -66,7 +66,88 @@ INSERT INTO `customer_report` VALUES ('25', '15208945148', '2016-11-08', '152089
 INSERT INTO `customer_report` VALUES ('26', '18876451249', '2016-11-08', '13346215429', '1', '周芬15208945149', '反对法的', '2016-11-08', null, 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', null);
 
 -- ----------------------------
--- Table structure for `group_info`
+-- Table structure for goods_class
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_class`;
+CREATE TABLE `goods_class` (
+  `goods_class_id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_class_code` varchar(150) NOT NULL COMMENT '分类编码',
+  `goods_class_name` varchar(150) NOT NULL COMMENT '分类名称',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`goods_class_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_class
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_class_map
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_class_map`;
+CREATE TABLE `goods_class_map` (
+  `goods_class_map_id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_class_id` varchar(11) NOT NULL COMMENT '商品类型id',
+  `goods_id` varchar(11) NOT NULL COMMENT '商品id',
+  PRIMARY KEY (`goods_class_map_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_class_map
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_image
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_image`;
+CREATE TABLE `goods_image` (
+  `goods_image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_image_url` varchar(150) NOT NULL COMMENT '图片url',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`goods_image_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_image
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_image_map
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_image_map`;
+CREATE TABLE `goods_image_map` (
+  `goods_image_map_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_id` varchar(11) NOT NULL COMMENT '图片id',
+  `goods_id` varchar(11) NOT NULL COMMENT '商品id',
+  PRIMARY KEY (`goods_image_map_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_image_map
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_info
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_info`;
+CREATE TABLE `goods_info` (
+  `goods_id` int(11) NOT NULL AUTO_INCREMENT,
+  `goods_tile` varchar(11) NOT NULL COMMENT '商品标题',
+  `goods_model_number` varchar(11) NOT NULL COMMENT '型号',
+  `goods_org_price` varchar(11) NOT NULL COMMENT '原价',
+  `goods_curr_price` varchar(11) NOT NULL COMMENT '现价',
+  `goods_stock` varchar(11) NOT NULL COMMENT '库存',
+  `goods_details` varchar(11) NOT NULL COMMENT '详情',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`goods_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for group_info
 -- ----------------------------
 DROP TABLE IF EXISTS `group_info`;
 CREATE TABLE `group_info` (
@@ -88,7 +169,7 @@ INSERT INTO `group_info` VALUES ('23', '推荐客户', '10006');
 INSERT INTO `group_info` VALUES ('24', '普通客户', '10007');
 
 -- ----------------------------
--- Table structure for `group_user_map`
+-- Table structure for group_user_map
 -- ----------------------------
 DROP TABLE IF EXISTS `group_user_map`;
 CREATE TABLE `group_user_map` (
@@ -105,7 +186,7 @@ INSERT INTO `group_user_map` VALUES ('3', '20', '4');
 INSERT INTO `group_user_map` VALUES ('4', '18', '4');
 
 -- ----------------------------
--- Table structure for `power_group_map_bak`
+-- Table structure for power_group_map_bak
 -- ----------------------------
 DROP TABLE IF EXISTS `power_group_map_bak`;
 CREATE TABLE `power_group_map_bak` (
@@ -124,7 +205,7 @@ INSERT INTO `power_group_map_bak` VALUES ('3', '20', '20');
 INSERT INTO `power_group_map_bak` VALUES ('4', '21', '21');
 
 -- ----------------------------
--- Table structure for `power_info_bak`
+-- Table structure for power_info_bak
 -- ----------------------------
 DROP TABLE IF EXISTS `power_info_bak`;
 CREATE TABLE `power_info_bak` (
@@ -144,24 +225,7 @@ INSERT INTO `power_info_bak` VALUES ('20', '10003', '分销商', null);
 INSERT INTO `power_info_bak` VALUES ('21', '10004', '普通用户', null);
 
 -- ----------------------------
--- Table structure for `product_info`
--- ----------------------------
-DROP TABLE IF EXISTS `product_info`;
-CREATE TABLE `product_info` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(11) NOT NULL COMMENT '产品名称',
-  `product_number` varchar(11) NOT NULL COMMENT '产品型号',
-  `product_price` varchar(12) NOT NULL COMMENT '产品价格',
-  `remark` varchar(50) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of product_info
--- ----------------------------
-
--- ----------------------------
--- Table structure for `sales_info`
+-- Table structure for sales_info
 -- ----------------------------
 DROP TABLE IF EXISTS `sales_info`;
 CREATE TABLE `sales_info` (
@@ -209,7 +273,7 @@ INSERT INTO `sales_info` VALUES ('134', 'é¤?æ¡?', '7600', '2018-6-18', null,
 INSERT INTO `sales_info` VALUES ('135', 'é¤?æ¡?', '7600', '2018-6-18', null, '137', 'ozLOG5LWXLjDpxZLrD1DxXIKxHWg', 'undefined', '1', null, null);
 
 -- ----------------------------
--- Table structure for `test`
+-- Table structure for test
 -- ----------------------------
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE `test` (
@@ -221,7 +285,7 @@ CREATE TABLE `test` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `user_info`
+-- Table structure for user_info
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
