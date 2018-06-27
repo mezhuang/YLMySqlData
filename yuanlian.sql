@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : localhost(root)
 Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : yuanlian
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-21 23:41:23
+Date: 2018-06-28 01:25:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,15 +71,29 @@ INSERT INTO `customer_report` VALUES ('26', '18876451249', '2016-11-08', '133462
 DROP TABLE IF EXISTS `goods_class`;
 CREATE TABLE `goods_class` (
   `goods_class_id` int(11) NOT NULL AUTO_INCREMENT,
-  `goods_class_code` varchar(150) NOT NULL COMMENT '分类编码',
-  `goods_class_name` varchar(150) NOT NULL COMMENT '分类名称',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `onelevel_code` varchar(10) NOT NULL,
+  `onelevel_name` varchar(30) DEFAULT NULL,
+  `twolevel_code` varchar(20) NOT NULL COMMENT '分类编码',
+  `twolevel_name` varchar(30) NOT NULL COMMENT '分类名称',
+  `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`goods_class_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_class
 -- ----------------------------
+INSERT INTO `goods_class` VALUES ('1', '01', '品类', '01001', '沙发', null);
+INSERT INTO `goods_class` VALUES ('2', '01', '品类', '01002', '床', null);
+INSERT INTO `goods_class` VALUES ('3', '02', '风格', '02001', '现代中式', null);
+INSERT INTO `goods_class` VALUES ('4', '02', '风格', '02002', '北欧轻奢', null);
+INSERT INTO `goods_class` VALUES ('5', '03', '空间', '03001', '客厅', null);
+INSERT INTO `goods_class` VALUES ('6', '03', '空间', '03002', '卧室', null);
+INSERT INTO `goods_class` VALUES ('7', '04', '套餐', '04001', '限时特惠', null);
+INSERT INTO `goods_class` VALUES ('8', '04', '套餐', '04002', '精英特惠', null);
+INSERT INTO `goods_class` VALUES ('9', '05', '品牌', '05001', '中深宅配', null);
+INSERT INTO `goods_class` VALUES ('10', '06', '展示位置', '06001', '首页轮播', null);
+INSERT INTO `goods_class` VALUES ('11', '06', '展示位置', '06002', '热销爆品', null);
+INSERT INTO `goods_class` VALUES ('12', '06', '展示位置', '06003', '精选推荐', null);
 
 -- ----------------------------
 -- Table structure for goods_class_map
@@ -87,8 +101,8 @@ CREATE TABLE `goods_class` (
 DROP TABLE IF EXISTS `goods_class_map`;
 CREATE TABLE `goods_class_map` (
   `goods_class_map_id` int(11) NOT NULL AUTO_INCREMENT,
-  `goods_class_id` varchar(11) NOT NULL COMMENT '商品类型id',
   `goods_id` varchar(11) NOT NULL COMMENT '商品id',
+  `goods_twolevel_code` varchar(11) NOT NULL COMMENT '商品类型id',
   PRIMARY KEY (`goods_class_map_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -144,6 +158,20 @@ CREATE TABLE `goods_info` (
 
 -- ----------------------------
 -- Records of goods_info
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for goods_position_bak
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_position_bak`;
+CREATE TABLE `goods_position_bak` (
+  `goods_position_id` int(11) DEFAULT NULL,
+  `goods_positon_code` varchar(10) DEFAULT NULL,
+  `goods_positon_name` varchar(20) DEFAULT NULL COMMENT '商品显示位置'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of goods_position_bak
 -- ----------------------------
 
 -- ----------------------------
@@ -223,6 +251,23 @@ INSERT INTO `power_info_bak` VALUES ('18', '10001', '系统管理', '测试环�
 INSERT INTO `power_info_bak` VALUES ('19', '10002', '家居顾问', null);
 INSERT INTO `power_info_bak` VALUES ('20', '10003', '分销商', null);
 INSERT INTO `power_info_bak` VALUES ('21', '10004', '普通用户', null);
+
+-- ----------------------------
+-- Table structure for product_info
+-- ----------------------------
+DROP TABLE IF EXISTS `product_info`;
+CREATE TABLE `product_info` (
+  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(11) NOT NULL COMMENT '产品名称',
+  `product_number` varchar(11) NOT NULL COMMENT '产品型号',
+  `product_price` varchar(12) NOT NULL COMMENT '产品价格',
+  `remark` varchar(50) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of product_info
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sales_info
