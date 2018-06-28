@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-06-28 01:25:34
+Date: 2018-06-28 20:54:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,14 +101,74 @@ INSERT INTO `goods_class` VALUES ('12', '06', '展示位置', '06003', '精选�
 DROP TABLE IF EXISTS `goods_class_map`;
 CREATE TABLE `goods_class_map` (
   `goods_class_map_id` int(11) NOT NULL AUTO_INCREMENT,
-  `goods_id` varchar(11) NOT NULL COMMENT '商品id',
+  `goods_id` varchar(50) NOT NULL COMMENT '商品id',
   `goods_twolevel_code` varchar(11) NOT NULL COMMENT '商品类型id',
   PRIMARY KEY (`goods_class_map_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_class_map
 -- ----------------------------
+INSERT INTO `goods_class_map` VALUES ('2', '842bac6b-f65f-45bf-9778-06c100f853ce', '01001');
+INSERT INTO `goods_class_map` VALUES ('3', '842bac6b-f65f-45bf-9778-06c100f853ce', '02001');
+INSERT INTO `goods_class_map` VALUES ('4', '842bac6b-f65f-45bf-9778-06c100f853ce', '03001');
+INSERT INTO `goods_class_map` VALUES ('5', '842bac6b-f65f-45bf-9778-06c100f853ce', '04001');
+INSERT INTO `goods_class_map` VALUES ('6', '842bac6b-f65f-45bf-9778-06c100f853ce', '05001');
+INSERT INTO `goods_class_map` VALUES ('7', '842bac6b-f65f-45bf-9778-06c100f853ce', '06001');
+INSERT INTO `goods_class_map` VALUES ('8', '972a11c9-088a-4869-997e-85a6c14c5f97', '01001');
+INSERT INTO `goods_class_map` VALUES ('9', '972a11c9-088a-4869-997e-85a6c14c5f97', '02001');
+INSERT INTO `goods_class_map` VALUES ('10', '972a11c9-088a-4869-997e-85a6c14c5f97', '03001');
+INSERT INTO `goods_class_map` VALUES ('11', '972a11c9-088a-4869-997e-85a6c14c5f97', '04001');
+INSERT INTO `goods_class_map` VALUES ('12', '972a11c9-088a-4869-997e-85a6c14c5f97', '05001');
+INSERT INTO `goods_class_map` VALUES ('13', '972a11c9-088a-4869-997e-85a6c14c5f97', '06001');
+INSERT INTO `goods_class_map` VALUES ('14', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '01001');
+INSERT INTO `goods_class_map` VALUES ('15', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '02001');
+INSERT INTO `goods_class_map` VALUES ('16', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '03001');
+INSERT INTO `goods_class_map` VALUES ('17', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '04001');
+INSERT INTO `goods_class_map` VALUES ('18', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '05001');
+INSERT INTO `goods_class_map` VALUES ('19', 'b32df8ee-3d10-41d0-b110-a1c733f7eb81', '06001');
+INSERT INTO `goods_class_map` VALUES ('20', '04c7e439-fafb-4efd-8c54-f65b918c0147', '01001');
+INSERT INTO `goods_class_map` VALUES ('21', '04c7e439-fafb-4efd-8c54-f65b918c0147', '02001');
+INSERT INTO `goods_class_map` VALUES ('22', '04c7e439-fafb-4efd-8c54-f65b918c0147', '03001');
+INSERT INTO `goods_class_map` VALUES ('23', '04c7e439-fafb-4efd-8c54-f65b918c0147', '04001');
+INSERT INTO `goods_class_map` VALUES ('24', '04c7e439-fafb-4efd-8c54-f65b918c0147', '05001');
+INSERT INTO `goods_class_map` VALUES ('25', '04c7e439-fafb-4efd-8c54-f65b918c0147', '06001');
+INSERT INTO `goods_class_map` VALUES ('26', '3877f645-449f-4780-bec1-4f3c1eba9da4', '01001');
+INSERT INTO `goods_class_map` VALUES ('27', '3877f645-449f-4780-bec1-4f3c1eba9da4', '02001');
+INSERT INTO `goods_class_map` VALUES ('28', '3877f645-449f-4780-bec1-4f3c1eba9da4', '03001');
+INSERT INTO `goods_class_map` VALUES ('29', '3877f645-449f-4780-bec1-4f3c1eba9da4', '04001');
+INSERT INTO `goods_class_map` VALUES ('30', '3877f645-449f-4780-bec1-4f3c1eba9da4', '05001');
+INSERT INTO `goods_class_map` VALUES ('31', '3877f645-449f-4780-bec1-4f3c1eba9da4', '06001');
+INSERT INTO `goods_class_map` VALUES ('32', '689c28f6-960e-423f-9e26-91712dc28150', '01001');
+INSERT INTO `goods_class_map` VALUES ('33', '689c28f6-960e-423f-9e26-91712dc28150', '02001');
+INSERT INTO `goods_class_map` VALUES ('34', '689c28f6-960e-423f-9e26-91712dc28150', '03001');
+INSERT INTO `goods_class_map` VALUES ('35', '689c28f6-960e-423f-9e26-91712dc28150', '04001');
+INSERT INTO `goods_class_map` VALUES ('36', '689c28f6-960e-423f-9e26-91712dc28150', '05001');
+INSERT INTO `goods_class_map` VALUES ('37', '689c28f6-960e-423f-9e26-91712dc28150', '06001');
+INSERT INTO `goods_class_map` VALUES ('38', '0065b556-6301-4d40-bf66-5c2124ce00b6', '01001');
+INSERT INTO `goods_class_map` VALUES ('39', '0065b556-6301-4d40-bf66-5c2124ce00b6', '02001');
+INSERT INTO `goods_class_map` VALUES ('40', '0065b556-6301-4d40-bf66-5c2124ce00b6', '03001');
+INSERT INTO `goods_class_map` VALUES ('41', '0065b556-6301-4d40-bf66-5c2124ce00b6', '04001');
+INSERT INTO `goods_class_map` VALUES ('42', '0065b556-6301-4d40-bf66-5c2124ce00b6', '05001');
+INSERT INTO `goods_class_map` VALUES ('43', '0065b556-6301-4d40-bf66-5c2124ce00b6', '06001');
+INSERT INTO `goods_class_map` VALUES ('44', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '01001');
+INSERT INTO `goods_class_map` VALUES ('45', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '02001');
+INSERT INTO `goods_class_map` VALUES ('46', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '03001');
+INSERT INTO `goods_class_map` VALUES ('47', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '04001');
+INSERT INTO `goods_class_map` VALUES ('48', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '05001');
+INSERT INTO `goods_class_map` VALUES ('49', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '06001');
+INSERT INTO `goods_class_map` VALUES ('56', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '01002');
+INSERT INTO `goods_class_map` VALUES ('57', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '02001');
+INSERT INTO `goods_class_map` VALUES ('58', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '03001');
+INSERT INTO `goods_class_map` VALUES ('59', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '04002');
+INSERT INTO `goods_class_map` VALUES ('60', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '05001');
+INSERT INTO `goods_class_map` VALUES ('61', '498ce112-fd6b-4e0c-b207-9052a9b485cc', '06002');
+INSERT INTO `goods_class_map` VALUES ('62', '207a8d23-bd09-4386-ba61-521c86ab5c82', '01001');
+INSERT INTO `goods_class_map` VALUES ('63', '207a8d23-bd09-4386-ba61-521c86ab5c82', '02001');
+INSERT INTO `goods_class_map` VALUES ('64', '207a8d23-bd09-4386-ba61-521c86ab5c82', '03001');
+INSERT INTO `goods_class_map` VALUES ('65', '207a8d23-bd09-4386-ba61-521c86ab5c82', '04001');
+INSERT INTO `goods_class_map` VALUES ('66', '207a8d23-bd09-4386-ba61-521c86ab5c82', '05002');
+INSERT INTO `goods_class_map` VALUES ('67', '207a8d23-bd09-4386-ba61-521c86ab5c82', '06001');
 
 -- ----------------------------
 -- Table structure for goods_image
@@ -116,20 +176,24 @@ CREATE TABLE `goods_class_map` (
 DROP TABLE IF EXISTS `goods_image`;
 CREATE TABLE `goods_image` (
   `goods_image_id` int(11) NOT NULL AUTO_INCREMENT,
-  `goods_image_url` varchar(150) NOT NULL COMMENT '图片url',
+  `goods_id` varchar(100) DEFAULT NULL,
+  `goods_image_url` varchar(255) NOT NULL COMMENT '图片url',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`goods_image_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_image
 -- ----------------------------
+INSERT INTO `goods_image` VALUES ('19', '207a8d23-bd09-4386-ba61-521c86ab5c82', 'E:/software/apache-tomcat/bin/../webapps/YLXcxMallBack/images/goodsImages/goodsimage001', null);
+INSERT INTO `goods_image` VALUES ('20', '207a8d23-bd09-4386-ba61-521c86ab5c82', 'E:/software/apache-tomcat/bin/../webapps/YLXcxMallBack/images/goodsImages/goodsimage002', null);
+INSERT INTO `goods_image` VALUES ('21', '207a8d23-bd09-4386-ba61-521c86ab5c82', 'E:/software/apache-tomcat/bin/../webapps/YLXcxMallBack/images/goodsImages/goodsimage003', null);
 
 -- ----------------------------
--- Table structure for goods_image_map
+-- Table structure for goods_image_mapbak
 -- ----------------------------
-DROP TABLE IF EXISTS `goods_image_map`;
-CREATE TABLE `goods_image_map` (
+DROP TABLE IF EXISTS `goods_image_mapbak`;
+CREATE TABLE `goods_image_mapbak` (
   `goods_image_map_id` int(11) NOT NULL AUTO_INCREMENT,
   `image_id` varchar(11) NOT NULL COMMENT '图片id',
   `goods_id` varchar(11) NOT NULL COMMENT '商品id',
@@ -137,7 +201,7 @@ CREATE TABLE `goods_image_map` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of goods_image_map
+-- Records of goods_image_mapbak
 -- ----------------------------
 
 -- ----------------------------
@@ -145,20 +209,23 @@ CREATE TABLE `goods_image_map` (
 -- ----------------------------
 DROP TABLE IF EXISTS `goods_info`;
 CREATE TABLE `goods_info` (
-  `goods_id` int(11) NOT NULL AUTO_INCREMENT,
-  `goods_tile` varchar(11) NOT NULL COMMENT '商品标题',
-  `goods_model_number` varchar(11) NOT NULL COMMENT '型号',
+  `goods_id` varchar(50) NOT NULL,
+  `goods_tile` varchar(30) NOT NULL COMMENT '商品标题',
+  `goods_model_number` varchar(30) NOT NULL COMMENT '型号',
   `goods_org_price` varchar(11) NOT NULL COMMENT '原价',
   `goods_curr_price` varchar(11) NOT NULL COMMENT '现价',
   `goods_stock` varchar(11) NOT NULL COMMENT '库存',
-  `goods_details` varchar(11) NOT NULL COMMENT '详情',
+  `goods_details` varchar(50) NOT NULL COMMENT '详情',
+  `create_time` datetime(6) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`goods_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_info
 -- ----------------------------
+INSERT INTO `goods_info` VALUES ('207a8d23-bd09-4386-ba61-521c86ab5c82', '沙发001', 'ffff', '21', '2', '2', '1', null, null);
+INSERT INTO `goods_info` VALUES ('498ce112-fd6b-4e0c-b207-9052a9b485cc', 'gg', 'ffff', '22', '22', '22', '22', null, null);
 
 -- ----------------------------
 -- Table structure for goods_position_bak
