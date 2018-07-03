@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-07-03 12:09:00
+Date: 2018-07-03 19:54:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,27 +75,37 @@ CREATE TABLE `goods_class` (
   `onelevel_name` varchar(30) DEFAULT NULL,
   `twolevel_code` varchar(20) NOT NULL COMMENT '分类编码',
   `twolevel_name` varchar(30) NOT NULL COMMENT '分类名称',
+  `goods_class_url` varchar(100) DEFAULT NULL,
+  `class_image_name` varchar(30) DEFAULT NULL,
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`goods_class_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_class
 -- ----------------------------
-INSERT INTO `goods_class` VALUES ('1', '01', '品类', '01001', '沙发', null);
-INSERT INTO `goods_class` VALUES ('2', '01', '品类', '01002', '床', null);
-INSERT INTO `goods_class` VALUES ('3', '02', '风格', '02001', '现代中式', null);
-INSERT INTO `goods_class` VALUES ('4', '02', '风格', '02002', '北欧轻奢', null);
-INSERT INTO `goods_class` VALUES ('5', '03', '空间', '03001', '客厅', null);
-INSERT INTO `goods_class` VALUES ('6', '03', '空间', '03002', '卧室', null);
-INSERT INTO `goods_class` VALUES ('7', '04', '套餐', '04001', '限时特惠', null);
-INSERT INTO `goods_class` VALUES ('8', '04', '套餐', '04002', '精英特惠', null);
-INSERT INTO `goods_class` VALUES ('9', '05', '品牌', '05001', '中深宅配', null);
-INSERT INTO `goods_class` VALUES ('10', '06', '展示位置', '06001', '首页轮播', null);
-INSERT INTO `goods_class` VALUES ('11', '06', '展示位置', '06002', '热销爆品', null);
-INSERT INTO `goods_class` VALUES ('12', '06', '展示位置', '06003', '精选推荐', null);
-INSERT INTO `goods_class` VALUES ('13', '07', '详情图片位置', '07001', '滚动轮播', null);
-INSERT INTO `goods_class` VALUES ('14', '07', '详情图片位置', '07002', '详情明细', null);
+INSERT INTO `goods_class` VALUES ('1', '01', '品类', '01001', '沙发', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'shafa.png', null);
+INSERT INTO `goods_class` VALUES ('2', '01', '品类', '01002', '床', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'bed.png', null);
+INSERT INTO `goods_class` VALUES ('3', '02', '风格', '02001', '现代中式', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'modern.png', null);
+INSERT INTO `goods_class` VALUES ('4', '02', '风格', '02002', '北欧轻奢', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'nordic', null);
+INSERT INTO `goods_class` VALUES ('5', '03', '空间', '03001', '客厅', null, null, null);
+INSERT INTO `goods_class` VALUES ('6', '03', '空间', '03002', '卧室', null, null, null);
+INSERT INTO `goods_class` VALUES ('7', '04', '套餐', '04001', '限时特惠', null, null, null);
+INSERT INTO `goods_class` VALUES ('8', '04', '套餐', '04002', '精英特惠', null, null, null);
+INSERT INTO `goods_class` VALUES ('9', '05', '品牌', '05001', '中深宅配', null, null, null);
+INSERT INTO `goods_class` VALUES ('10', '06', '展示位置', '06001', '首页轮播', null, null, null);
+INSERT INTO `goods_class` VALUES ('11', '06', '展示位置', '06002', '热销爆品', null, null, null);
+INSERT INTO `goods_class` VALUES ('12', '06', '展示位置', '06003', '精选推荐', null, null, null);
+INSERT INTO `goods_class` VALUES ('13', '07', '详情图片位置', '07001', '滚动轮播', null, null, null);
+INSERT INTO `goods_class` VALUES ('14', '07', '详情图片位置', '07002', '详情明细', null, null, null);
+INSERT INTO `goods_class` VALUES ('15', '01', '品类', '01003', '柜类', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'cabinets.png', null);
+INSERT INTO `goods_class` VALUES ('16', '01', '品类', '01004', '桌类', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'table.png', null);
+INSERT INTO `goods_class` VALUES ('17', '01', '品类', '01005', '几类', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'desks.png', null);
+INSERT INTO `goods_class` VALUES ('18', '01', '品类', '01006', '椅等', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'chairs.png', null);
+INSERT INTO `goods_class` VALUES ('19', '01', '品类', '01007', '床垫', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'mattresses.png', null);
+INSERT INTO `goods_class` VALUES ('20', '01', '品类', '01008', '窗帘', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'household_goods.png', null);
+INSERT INTO `goods_class` VALUES ('23', '02', '风格', '02003', '简美', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'simple_american_style.png', null);
+INSERT INTO `goods_class` VALUES ('24', '02', '风格', '02004', '儿童', 'https://192.168.1.104:443/YLXcxMallBack/images/classImages/', 'children.png', null);
 
 -- ----------------------------
 -- Table structure for goods_class_map
@@ -106,7 +116,7 @@ CREATE TABLE `goods_class_map` (
   `goods_id` varchar(50) NOT NULL COMMENT '商品id',
   `goods_twolevel_code` varchar(11) NOT NULL COMMENT '商品类型id',
   PRIMARY KEY (`goods_class_map_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_class_map
@@ -159,18 +169,24 @@ INSERT INTO `goods_class_map` VALUES ('46', '01c47f87-d348-4b93-8cd7-c83311f21cc
 INSERT INTO `goods_class_map` VALUES ('47', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '04001');
 INSERT INTO `goods_class_map` VALUES ('48', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '05001');
 INSERT INTO `goods_class_map` VALUES ('49', '01c47f87-d348-4b93-8cd7-c83311f21ccd', '06001');
-INSERT INTO `goods_class_map` VALUES ('228', '59d3f642-f758-48a2-b262-19edba28cfda', '01001');
-INSERT INTO `goods_class_map` VALUES ('229', '59d3f642-f758-48a2-b262-19edba28cfda', '02001');
-INSERT INTO `goods_class_map` VALUES ('230', '59d3f642-f758-48a2-b262-19edba28cfda', '03001');
-INSERT INTO `goods_class_map` VALUES ('231', '59d3f642-f758-48a2-b262-19edba28cfda', '04001');
-INSERT INTO `goods_class_map` VALUES ('232', '59d3f642-f758-48a2-b262-19edba28cfda', '05001');
-INSERT INTO `goods_class_map` VALUES ('233', '59d3f642-f758-48a2-b262-19edba28cfda', '06001');
-INSERT INTO `goods_class_map` VALUES ('234', 'a81a642b-44c4-4805-bb74-762484dcdbff', '01001');
-INSERT INTO `goods_class_map` VALUES ('235', 'a81a642b-44c4-4805-bb74-762484dcdbff', '02002');
-INSERT INTO `goods_class_map` VALUES ('236', 'a81a642b-44c4-4805-bb74-762484dcdbff', '03001');
-INSERT INTO `goods_class_map` VALUES ('237', 'a81a642b-44c4-4805-bb74-762484dcdbff', '04001');
-INSERT INTO `goods_class_map` VALUES ('238', 'a81a642b-44c4-4805-bb74-762484dcdbff', '05001');
-INSERT INTO `goods_class_map` VALUES ('239', 'a81a642b-44c4-4805-bb74-762484dcdbff', '06001');
+INSERT INTO `goods_class_map` VALUES ('336', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '01001');
+INSERT INTO `goods_class_map` VALUES ('337', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '02001');
+INSERT INTO `goods_class_map` VALUES ('338', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '03001');
+INSERT INTO `goods_class_map` VALUES ('339', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '04001');
+INSERT INTO `goods_class_map` VALUES ('340', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '05001');
+INSERT INTO `goods_class_map` VALUES ('341', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '06001');
+INSERT INTO `goods_class_map` VALUES ('348', '0662f956-0199-40a5-a1d5-eb37ea7de002', '01002');
+INSERT INTO `goods_class_map` VALUES ('349', '0662f956-0199-40a5-a1d5-eb37ea7de002', '02001');
+INSERT INTO `goods_class_map` VALUES ('350', '0662f956-0199-40a5-a1d5-eb37ea7de002', '03001');
+INSERT INTO `goods_class_map` VALUES ('351', '0662f956-0199-40a5-a1d5-eb37ea7de002', '04001');
+INSERT INTO `goods_class_map` VALUES ('352', '0662f956-0199-40a5-a1d5-eb37ea7de002', '05002');
+INSERT INTO `goods_class_map` VALUES ('353', '0662f956-0199-40a5-a1d5-eb37ea7de002', '06003');
+INSERT INTO `goods_class_map` VALUES ('354', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '01001');
+INSERT INTO `goods_class_map` VALUES ('355', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '02001');
+INSERT INTO `goods_class_map` VALUES ('356', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '03001');
+INSERT INTO `goods_class_map` VALUES ('357', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '04001');
+INSERT INTO `goods_class_map` VALUES ('358', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '05001');
+INSERT INTO `goods_class_map` VALUES ('359', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '06003');
 
 -- ----------------------------
 -- Table structure for goods_formatprice
@@ -183,7 +199,7 @@ CREATE TABLE `goods_formatprice` (
   `org_price` varchar(30) DEFAULT NULL COMMENT '原价',
   `curr_price` varchar(30) NOT NULL COMMENT '现价',
   PRIMARY KEY (`format_price_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_formatprice
@@ -200,9 +216,11 @@ INSERT INTO `goods_formatprice` VALUES ('11', null, '2.5', '1200', '1000');
 INSERT INTO `goods_formatprice` VALUES ('12', null, '2.9', '2500', '1200');
 INSERT INTO `goods_formatprice` VALUES ('13', null, '2.5', '1000', '8000');
 INSERT INTO `goods_formatprice` VALUES ('14', null, '2.9', '1800', '9000');
-INSERT INTO `goods_formatprice` VALUES ('17', '59d3f642-f758-48a2-b262-19edba28cfda', '2.9', '2000', '4000');
-INSERT INTO `goods_formatprice` VALUES ('18', '59d3f642-f758-48a2-b262-19edba28cfda', '3.2', '3000', '5000');
-INSERT INTO `goods_formatprice` VALUES ('19', 'a81a642b-44c4-4805-bb74-762484dcdbff', '2700*850*650', '12000', '8900');
+INSERT INTO `goods_formatprice` VALUES ('42', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '2700*850*650', '12000', '8900');
+INSERT INTO `goods_formatprice` VALUES ('43', '922e6345-0551-4876-bdfe-bd04faa9b7d8', '1.8米', '200', '100');
+INSERT INTO `goods_formatprice` VALUES ('46', '0662f956-0199-40a5-a1d5-eb37ea7de002', '2700*850*650', '11', '11');
+INSERT INTO `goods_formatprice` VALUES ('47', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '2700*850*650', '100', '11');
+INSERT INTO `goods_formatprice` VALUES ('48', '69b576bd-0ad0-47d5-9cd1-583884c04fff', '180*100', '200', '12');
 
 -- ----------------------------
 -- Table structure for goods_image
@@ -215,7 +233,7 @@ CREATE TABLE `goods_image` (
   `position_code` varchar(30) DEFAULT NULL COMMENT '显示位置',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`goods_image_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goods_image
@@ -236,9 +254,18 @@ INSERT INTO `goods_image` VALUES ('97', '3154cfb5-97a1-434f-bdde-7c33e699310d', 
 INSERT INTO `goods_image` VALUES ('98', '3154cfb5-97a1-434f-bdde-7c33e699310d', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07001', null);
 INSERT INTO `goods_image` VALUES ('99', 'd4168f1a-a2e6-4b3c-b0e0-780903bd5fc7', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
 INSERT INTO `goods_image` VALUES ('100', 'd4168f1a-a2e6-4b3c-b0e0-780903bd5fc7', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07001', null);
-INSERT INTO `goods_image` VALUES ('120', '59d3f642-f758-48a2-b262-19edba28cfda', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
-INSERT INTO `goods_image` VALUES ('121', '59d3f642-f758-48a2-b262-19edba28cfda', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07001', null);
-INSERT INTO `goods_image` VALUES ('122', 'a81a642b-44c4-4805-bb74-762484dcdbff', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('130', '8b990ce3-9355-4e8d-94a1-c0f0a7afa1a6', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07002', null);
+INSERT INTO `goods_image` VALUES ('131', '8b990ce3-9355-4e8d-94a1-c0f0a7afa1a6', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('132', 'accfd8d0-8d09-46d0-8a4c-e4dd5069338a', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07002', null);
+INSERT INTO `goods_image` VALUES ('133', 'accfd8d0-8d09-46d0-8a4c-e4dd5069338a', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('146', '53d238ba-447b-40d8-94c3-e6e6cfe9dc36', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('147', '53d238ba-447b-40d8-94c3-e6e6cfe9dc36', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07002', null);
+INSERT INTO `goods_image` VALUES ('148', '922e6345-0551-4876-bdfe-bd04faa9b7d8', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('149', '922e6345-0551-4876-bdfe-bd04faa9b7d8', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07002', null);
+INSERT INTO `goods_image` VALUES ('150', '922e6345-0551-4876-bdfe-bd04faa9b7d8', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '001', null);
+INSERT INTO `goods_image` VALUES ('151', '69b576bd-0ad0-47d5-9cd1-583884c04fff', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07001', null);
+INSERT INTO `goods_image` VALUES ('152', '69b576bd-0ad0-47d5-9cd1-583884c04fff', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage002.jpg', '07002', null);
+INSERT INTO `goods_image` VALUES ('153', '0662f956-0199-40a5-a1d5-eb37ea7de002', 'https://192.168.1.104:443/YLXcxMallBack/images/goodsImages/goodsimage001.jpg', '07002', null);
 
 -- ----------------------------
 -- Table structure for goods_image_mapbak
@@ -275,8 +302,9 @@ CREATE TABLE `goods_info` (
 -- ----------------------------
 -- Records of goods_info
 -- ----------------------------
-INSERT INTO `goods_info` VALUES ('59d3f642-f758-48a2-b262-19edba28cfda', '沙发006', 'L009', '10', '2', '2', '周芬', '2018-07-03 11:30:40', null);
-INSERT INTO `goods_info` VALUES ('a81a642b-44c4-4805-bb74-762484dcdbff', '沙发 ', 'ko001', '15', '1', '1', '周芬', '2018-07-03 12:05:12', null);
+INSERT INTO `goods_info` VALUES ('0662f956-0199-40a5-a1d5-eb37ea7de002', '床', '2', '10', '1', '1', '周芬', '2018-07-03 15:39:21', null);
+INSERT INTO `goods_info` VALUES ('69b576bd-0ad0-47d5-9cd1-583884c04fff', '电视柜', 'L001', '10', '2', '2', '', '2018-07-03 15:47:34', null);
+INSERT INTO `goods_info` VALUES ('922e6345-0551-4876-bdfe-bd04faa9b7d8', '沙发001', '123', '10', '2', '2', '', '2018-07-03 15:18:08', null);
 
 -- ----------------------------
 -- Table structure for goods_position_bak
